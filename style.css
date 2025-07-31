@@ -109,12 +109,19 @@ img {
     color: #333;       /* Cor do texto (pode personalizar) */
 }
 .nav-menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 20px;
-    margin-left: 65px;
-    flex: 1; /* Faz o menu ocupar o espaço e empurra o botão para a direita */
+    position: fixed;
+    left: -100%; /* Inicialmente fora da tela */
+    top: 80px; /* Abaixo do header */
+    flex-direction: column;
+    background-color: var(--white-color); /* Fundo branco, por isso a "barrinha" branca */
+    width: 100%; /* Largura total da tela */
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.nav-menu.active {
+    left: 0; /* Entra na tela quando a classe 'active' é adicionada */
 }
 
 .nav-cta {
