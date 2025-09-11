@@ -15,27 +15,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header class="header">
+    <header class="header" role="banner">
         <div class="container">
-            <nav class="navbar">
-		<div class="logo-wrapper">
-    <a href="#">
-        <img src="images/crescejá-removebg-preview.png" class="logo-img">
-    </a>
-</div>             
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#servicos" class="nav-link">Serviços</a></li>
-                <li class="nav-item"><a href="#sobre" class="nav-link">Sobre Nós</a></li>
-                <li class="nav-item"><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
-            </ul>
-            <a href="#contato" class="btn btn-primary nav-cta">Agendar Consultoria</a>
-
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+            <nav class="navbar" role="navigation" aria-label="Navegação principal">
+                <div class="logo-wrapper">
+                    <a href="#" aria-label="Página inicial da Cresce Já">
+                        <img src="images/crescejá-removebg-preview.png" class="logo-img" alt="Logo Cresce Já">
+                    </a>
                 </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item"><a href="#servicos" class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="#sobre" class="nav-link">Sobre Nós</a></li>
+                    <li class="nav-item"><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                </ul>
+                <a href="#contato" class="btn btn-primary nav-cta" aria-label="Agendar uma consultoria">Agendar Consultoria</a>
+                <button class="hamburger" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </nav>
         </div>
     </header>
@@ -95,8 +93,8 @@
                         <p class="testimonial-text">"A consultoria foi um divisor de águas. Em 3 meses, organizamos o funil de vendas e nosso faturamento aumentou 40%."</p>
                         <p class="testimonial-author">- Joana Silva, fundadora da Doce Encanto Confeitaria</p>
                     </div>
-                    <button id="prevBtn" class="testimonial-nav"><i class="fas fa-chevron-left"></i></button>
-                    <button id="nextBtn" class="testimonial-nav"><i class="fas fa-chevron-right"></i></button>
+                    <button id="prevBtn" class="testimonial-nav" aria-label="Depoimento anterior"><i class="fas fa-chevron-left"></i></button>
+                    <button id="nextBtn" class="testimonial-nav" aria-label="Próximo depoimento"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </section>
@@ -106,9 +104,9 @@
                 <div class="cta-content animate-on-scroll">
                     <h2 class="section-title">Pronto para dar o próximo passo?</h2>
                     <p>Agende uma conversa inicial gratuita de 30 minutos. Sem compromisso, vamos entender seu desafio e mostrar como podemos ajudar.</p>
-                    <form class="contact-form">
-                        <input type="text" placeholder="Seu Nome" required>
-                        <input type="email" placeholder="Seu Melhor E-mail" required>
+                    <form class="contact-form" aria-label="Formulário de contato">
+                        <input type="text" placeholder="Seu Nome" required aria-label="Digite seu nome">
+                        <input type="email" placeholder="Seu Melhor E-mail" required aria-label="Digite seu e-mail">
                         <button type="submit" class="btn btn-secondary">Agendar Agora</button>
                     </form>
                 </div>
@@ -116,11 +114,12 @@
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <p>&copy; 2025 Cresce Já. Todos os direitos reservados.</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/crescejaconsultoria/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/crescejaconsultoria/" target="_blank" aria-label="Visite nosso Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://chat.whatsapp.com/BbycaT9TnxJ0a6CiF1BjLn" target="_blank" aria-label="Entre em nosso grupo do WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>

@@ -1,40 +1,40 @@
 document.addEventListener("DOMContentLoaded", function() {
-
     // 1. FUNCIONALIDADE DO MENU HAMBÚRGUER (MOBILE)
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
 
     hamburger.addEventListener("click", () => {
+        const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
+        hamburger.setAttribute("aria-expanded", !isExpanded);
         hamburger.classList.toggle("active");
         navMenu.classList.toggle("active");
     });
 
     // Fecha o menu ao clicar em um link
-    document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        navMenu.classList.remove("active");
-    }));
-
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+            hamburger.setAttribute("aria-expanded", "false");
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        });
+    });
 
     // 2. ANIMAÇÃO AO ROLAR A PÁGINA (INTERSECTION OBSERVER)
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                // Opcional: para a animação não repetir
-                observer.unobserve(entry.target); 
-            }
-        });
-    }, {
-        threshold: 0.1 // A animação começa quando 10% do elemento estiver visível
-    });
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.1 }
+    );
 
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
-    
+    animatedElements.forEach(el => observer.observe(el));
 
     // 3. CARROSSEL DE DEPOIMENTOS
     const testimonials = [
@@ -49,20 +49,19 @@ document.addEventListener("DOMContentLoaded", function() {
         { text: `"Nosso processo de vendas ficou muito mais estruturado e eficiente."`, author: "- Isabel Martins, fundadora da Confeitaria Doce Sabor" },
         { text: `"Com as estratégias aprendidas, conseguimos atrair mais clientes e aumentar nossa receita."`, author: "- João Carlos, sócio da Oficina Moto & Cia" }
     ];
-    
 
     let currentIndex = 0;
     const testimonialElement = document.querySelector(".testimonial-text");
     const authorElement = document.querySelector(".testimonial-author");
     const contentWrapper = document.querySelector(".testimonial-content");
 
-    const updateTestimonial = (index) => {
-        contentWrapper.classList.remove("active"); // Sai suavemente
+    const updateTestimonial = index => {
+        contentWrapper.classList.remove("active");
         setTimeout(() => {
             testimonialElement.textContent = testimonials[index].text;
             authorElement.textContent = testimonials[index].author;
-            contentWrapper.classList.add("active"); // Entra suavemente
-        }, 300); // Tempo para o fade-out antes do fade-in
+            contentWrapper.classList.add("active");
+        }, 300);
     };
 
     document.getElementById("nextBtn").addEventListener("click", () => {
@@ -75,6 +74,37 @@ document.addEventListener("DOMContentLoaded", function() {
         updateTestimonial(currentIndex);
     });
 
-    // Inicializa o primeiro depoimento com animação
+    // Inicializa o primeiro depoimento
     setTimeout(() => contentWrapper.classList.add("active"), 100);
+
+    // 4. SOMBRA NO HEADER AO ROLAR
+    window.addEventListener("scroll", () => {
+        const header = document.querySelector(".header");
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
+
+    // 5. DESTACAR ITEM DE MENU ATIVO
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= sectionTop - 80) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
+            }
+        });
+    });
 });
