@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 3. CARROSSEL DE DEPOIMENTOS
     const testimonials = [
-        { text: `"A consultoria foi essencial para organizar nossas vendas e aumentar o faturamento em 30%."`, author: "- Ana Paula, dona da Boutique Florescer" },
-        { text: `"Com o apoio da Cresce Já, nossa equipe aprendeu técnicas que realmente funcionam."`, author: "- Bruno Silva, gerente da Padaria Pão Quentinho" },
+        { text: `"A consultoria foi essencial para organizar nossas vendas e aumentar o faturamento em 30%."`, author: "- Ana Laura - Dona da Mar E Mesa Delivery" },
+        { text: `"Com o apoio da Cresce Já, nossa equipe aprendeu técnicas que realmente funcionam."`, author: "- Matheus, Dono da Coffee & Book" },
         { text: `"Recomendo para qualquer microempresa que queira crescer de forma consistente e prática."`, author: "- Carla Mendes, proprietária da Papelaria Criativa" },
         { text: `"Em poucos meses, vimos uma mudança real na forma como abordamos nossos clientes."`, author: "- Diego Santos, fundador da Loja TecnoSmart" },
         { text: `"O acompanhamento contínuo fez toda a diferença para manter o foco nas metas."`, author: "- Elisa Ribeiro, sócia da Academia Fit Vida" },
